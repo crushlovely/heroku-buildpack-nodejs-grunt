@@ -91,7 +91,7 @@ if test -f $build_dir/Gruntfile.js || test -f $build_dir/Gruntfile.coffee; then
   status "Found gruntfile, installing grunt-cli"
   npm install --production grunt-cli
   status "grunt-cli installed, running grunt heroku"
-  $build_dir/node_module/grunt-cli/bin/grunt herok
+  $build_dir/node_modules/grunt-cli/bin/grunt heroku
 fi
 
 status "Caching node_modules for future builds"
