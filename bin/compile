@@ -80,7 +80,7 @@ npm install --production 2>&1 | indent
 # Install dev dependencies, if necessary
 if [ "$installDevDependencies" = "true" ]; then
   status "Installing dev dependencies"
-  npm install --development 2>$1 | indent
+  NODE_ENV=development npm install 2>&1 | indent
 fi
 
 status "Pruning unused dependencies"
