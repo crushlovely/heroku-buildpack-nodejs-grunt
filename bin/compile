@@ -77,8 +77,22 @@ fi
 status "Installing dependencies"
 npm install --production 2>&1 | indent
 
+# Install dev dependencies, if necessary
+if [ "$installDevDependencies" = "true" ]; then
+  status "Installing dev dependencies"
+  npm install --development 2>$1 | indent
+fi
+
 status "Pruning unused dependencies"
 npm prune 2>&1 | indent
+
+# Run Grunt
+if test -f $build_dir/Gruntfile.js || test -f $build_dir/Gruntfile.coffee; then
+  status "Found gruntfile, installing grunt-cli"
+  npm install --production grunt-cli
+  status "grunt-cli installed, running grunt heroku"
+  $build_dir/node_module/grunt-cli/bin/grunt herok
+fi
 
 status "Caching node_modules for future builds"
 rm -rf $cache_dir
