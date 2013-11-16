@@ -78,7 +78,7 @@ status "Installing dependencies"
 npm install --production 2>&1 | indent
 
 # Install dev dependencies, if necessary
-if [ "$installDevDependencies" = "true" ]; then
+if test "$installDevDependencies" = "true"; then
   status "Installing dev dependencies"
   NODE_ENV=development npm install 2>&1 | indent
 fi
