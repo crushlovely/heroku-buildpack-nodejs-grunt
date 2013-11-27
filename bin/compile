@@ -95,7 +95,7 @@ if test -f $build_dir/Gruntfile.js || test -f $build_dir/Gruntfile.coffee; then
   grunt=$build_dir/node_modules/grunt-cli/bin/grunt
   if [[ $($grunt -h) =~ 'heroku' ]]; then
     status "Running grunt heroku task"
-    grunt heroku
+    $grunt heroku
   else
     status "No heroku grunt task defined"
   fi
