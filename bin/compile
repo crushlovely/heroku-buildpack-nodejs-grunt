@@ -74,13 +74,14 @@ if test -d $cache_dir; then
 fi
 
 # Make npm output to STDOUT instead of its default STDERR
-status "Installing dependencies"
-npm install --production 2>&1 | indent
 
 # Install dev dependencies, if necessary
 if test "$installDevDependencies" = "true"; then
   status "Installing dev dependencies"
   NODE_ENV=development npm install 2>&1 | indent
+else
+  status "Installing dependencies"
+  npm install --production 2>&1 | indent
 fi
 
 status "Pruning unused dependencies"
