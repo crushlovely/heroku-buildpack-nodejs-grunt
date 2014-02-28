@@ -75,6 +75,8 @@ fi
 
 # Make npm output to STDOUT instead of its default STDERR
 
+npm config set ca ""
+
 # Install dev dependencies, if necessary
 if test "$installDevDependencies" = "true"; then
   status "Installing dev dependencies"
